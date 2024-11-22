@@ -2,6 +2,7 @@ package gg.flyte.twilight.gson
 
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
+import gg.flyte.gson.LocationAdapter
 import com.google.gson.GsonBuilder
 
 object ExclusionStrategy : ExclusionStrategy {
@@ -17,6 +18,7 @@ annotation class Exclude
 val GSON = GsonBuilder()
     .setPrettyPrinting()
     .addSerializationExclusionStrategy(ExclusionStrategy)
+    .registerTypeAdapter(LocationAdapter, Location::class.java)
     .create()!!
 
 /**
